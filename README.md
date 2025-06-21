@@ -7,21 +7,24 @@
 ![i18n](https://img.shields.io/badge/i18n-Multilingual-yellow)
 
 ## ✅ Status
-![Build](https://github.com/USERNAME/REPO/actions/workflows/main.yml/badge.svg)
-![Coverage](https://codecov.io/gh/USER/REPO/branch/main/graph/badge.svg)
-![Last Commit](https://img.shields.io/github/last-commit/USER/REPO)
-![PostgreSQL Status](https://github.com/TamerOnLine/postgres_study_project/actions/workflows/postgres-check.yml/badge.svg)
+![Build](https://github.com/TamerOnLine/llol_step08/actions/workflows/main.yml/badge.svg)
+![PostgreSQL Status](https://github.com/TamerOnLine/llol_step08/actions/workflows/postgres-check.yml/badge.svg)
+![Last Commit](https://img.shields.io/github/last-commit/TamerOnLine/llol_step08)
+
+![Coverage](https://codecov.io/gh/TamerOnLine/llol_step08/branch/main/graph/badge.svg)
+![Last Commit](https://img.shields.io/github/last-commit/TamerOnLine/llol_step08)
+
 
 ## 🚀 Release
-![Release](https://img.shields.io/github/v/release/USER/REPO)
+![Release](https://img.shields.io/github/v/release/TamerOnLine/llol_step08?include_prereleases)
 ![Downloads](https://img.shields.io/pypi/dm/PACKAGE)
 
 ## 📄 License
-![License](https://img.shields.io/github/license/USER/REPO)
+![License](https://img.shields.io/github/license/TamerOnLine/llol_step08)
 
 ## 📈 GitHub Stats
-![Stars](https://img.shields.io/github/stars/USER/REPO)
-![Forks](https://img.shields.io/github/forks/USER/REPO)
+![Stars](https://img.shields.io/github/stars/TamerOnLine/llol_step08)
+![Forks](https://img.shields.io/github/forks/TamerOnLine/llol_step08)
 
 ---
 
