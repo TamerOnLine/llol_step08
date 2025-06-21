@@ -1,12 +1,27 @@
 # llol_step08
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/user/repo/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-[![Flask Version](https://img.shields.io/badge/Flask-2.0%2B-green.svg)](https://flask.palletsprojects.com/en/2.0.x/)
-![i18n Supported](https://img.shields.io/badge/i18n-Multilingual-informational.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Active-blue.svg)
-![Step 07](https://img.shields.io/badge/Progress-Step_07-blueviolet.svg)
+## 🧩 Built With
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Flask](https://img.shields.io/badge/Flask-2.3-lightgrey)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue)
+![i18n](https://img.shields.io/badge/i18n-Multilingual-yellow)
+
+## ✅ Status
+![Build](https://github.com/USER/REPO/actions/workflows/main.yml/badge.svg)
+![Coverage](https://codecov.io/gh/USER/REPO/branch/main/graph/badge.svg)
+![Last Commit](https://img.shields.io/github/last-commit/USER/REPO)
+![PostgreSQL Status](https://github.com/USER/REPO/actions/workflows/postgres-check.yml/badge.svg)
+
+## 🚀 Release
+![Release](https://img.shields.io/github/v/release/USER/REPO)
+![Downloads](https://img.shields.io/pypi/dm/PACKAGE)
+
+## 📄 License
+![License](https://img.shields.io/github/license/USER/REPO)
+
+## 📈 GitHub Stats
+![Stars](https://img.shields.io/github/stars/USER/REPO)
+![Forks](https://img.shields.io/github/forks/USER/REPO)
 
 ---
 
