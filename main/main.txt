@@ -1,0 +1,59 @@
+Auflistung der Ordnerpfade für Volume AgentCrafter
+Volumeseriennummer : 2AC3-E7A3
+M:.
+¦   babel.cfg
+¦   extensions.py
+¦   i18n.py
+¦   i18n_runtime.py
+¦   i18n_translate.py
+¦   main.txt
+¦   run.py
+¦   __init__.py
+¦   
++---config
+¦       settings.py
+¦       __init__.py
+¦       
++---logic
+¦       builder.py
+¦       __init__.py
+¦       
++---models
+¦       models.py
+¦       __init__.py
+¦       
++---routes
+¦   ¦   main_routes.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---admin
+¦           admin_builder_routes.py
+¦           admin_field.py
+¦           admin_paragraph.py
+¦           admin_routes.py
+¦           __init__.py
+¦           
++---static
+¦   +---css
+¦           resume.css
+¦           
++---templates
+¦   ¦   base.html.j2
+¦   ¦   home.html.j2
+¦   ¦   index.html.j2
+¦   ¦   
+¦   +---admin
+¦   ¦       paragraph_fields.html.j2
+¦   ¦       resume_builder.html.j2
+¦   ¦       sections.html.j2
+¦   ¦       settings.html.j2
+¦   ¦       single_section_view.html.j2
+¦   ¦       
+¦   +---partials
+¦           flash_messages.html.j2
+¦           footer.html.j2
+¦           navbar.html.j2
+¦           
++---tools
+        init_db.py
+        
