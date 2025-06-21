@@ -7,10 +7,10 @@
 ![i18n](https://img.shields.io/badge/i18n-Multilingual-yellow)
 
 ## ✅ Status
-![Build](https://github.com/USER/REPO/actions/workflows/main.yml/badge.svg)
+![Build](https://github.com/USERNAME/REPO/actions/workflows/main.yml/badge.svg)
 ![Coverage](https://codecov.io/gh/USER/REPO/branch/main/graph/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/USER/REPO)
-![PostgreSQL Status](https://github.com/USER/REPO/actions/workflows/postgres-check.yml/badge.svg)
+![PostgreSQL Status](https://github.com/TamerOnLine/postgres_study_project/actions/workflows/postgres-check.yml/badge.svg)
 
 ## 🚀 Release
 ![Release](https://img.shields.io/github/v/release/USER/REPO)
