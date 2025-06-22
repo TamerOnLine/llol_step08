@@ -59,8 +59,7 @@ def write_to_docs(content: str, output_path=OUTPUT_PATH):
         content (str): Final markdown content to write.
         output_path (str): Destination path for the output file.
     """
-
-        # إزالة الفراغات الفارغة الزائدة أعلى وأسفل المحتوى
+    # Remove excess whitespace from top and bottom
     lines = content.splitlines()
     while lines and not lines[0].strip():
         lines.pop(0)

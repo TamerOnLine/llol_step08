@@ -4,13 +4,10 @@ from .models.models import (
     ResumeParagraph, ResumeField, NavigationLink, LanguageOption
 )
 from .routes.admin import admin_bp
-
 from .routes.main_routes import main_bp
 from .extensions import babel
 from .i18n_runtime import init_i18n, get_locale
 import os
-
-
 import logging
 
 def create_app():
@@ -49,11 +46,10 @@ def create_app():
             insert_initial_languages()
             insert_initial_settings()
 
-
     @app.before_request
     def log_locale_info():
-        print("Requested locale:", get_locale())
-        print("Babel directory:", app.config.get('BABEL_TRANSLATION_DIRECTORIES'))
+        logging.debug("Requested locale: %s", get_locale())
+        logging.debug("Babel directory: %s", app.config.get('BABEL_TRANSLATION_DIRECTORIES'))
 
     @app.context_processor
     def inject_globals():
@@ -62,7 +58,6 @@ def create_app():
         settings_list = Setting.query.all()
         settings_dict = {s.key: s.value for s in settings_list}
         return dict(nav_links=nav_links, langs=langs, settings=settings_list, settings_dict=settings_dict)
-
 
     return app
 
@@ -75,11 +70,10 @@ def insert_initial_sections():
         "Skills", "Languages", "Projects", "Links", "Interests"
     ]
     for idx, title in enumerate(default_sections, start=1):
-        print(f"Adding section: {title}")
         section = Section(order=idx, title=title, content="")
         db.session.add(section)
     db.session.commit()
-    print("Sections inserted.")
+
 
 def insert_initial_navigation():
     """
@@ -87,18 +81,16 @@ def insert_initial_navigation():
     """
     if NavigationLink.query.count() == 0:
         nav_items = [
-            {"label": "Home", "icon": "🏠", "endpoint": "main.index", "order": 0},
-            {"label": "Sections", "icon": "📝", "endpoint": "admin.manage_sections", "order": 1},
-            {"label": "Settings", "icon": "🎨", "endpoint": "admin.manage_settings", "order": 2},
-            {"label": "Builder", "icon": "🧱", "endpoint": "admin.resume_builder", "order": 3}
-            
-
+            {"label": "Home", "icon": "", "endpoint": "main.index", "order": 0},
+            {"label": "Sections", "icon": "", "endpoint": "admin.manage_sections", "order": 1},
+            {"label": "Settings", "icon": "", "endpoint": "admin.manage_settings", "order": 2},
+            {"label": "Builder", "icon": "", "endpoint": "admin.resume_builder", "order": 3}
         ]
         for item in nav_items:
             link = NavigationLink(**item)
             db.session.add(link)
         db.session.commit()
-        print("Navigation links inserted.")
+
 
 def insert_initial_languages():
     """
@@ -113,11 +105,12 @@ def insert_initial_languages():
         for lang in langs:
             db.session.add(LanguageOption(**lang))
         db.session.commit()
-        print("Languages inserted.")
 
 
 def insert_initial_settings():
-    from .models.models import Setting
+    """
+    Insert default styling and theme settings into the database.
+    """
     if not Setting.query.filter_by(key="section_title_css").first():
         db.session.add(Setting(key="section_title_css", value='{"font-size": "20px", "color": "#000", "font-weight": "normal"}'))
     if not Setting.query.filter_by(key="paragraph_css").first():
@@ -127,5 +120,3 @@ def insert_initial_settings():
     if not Setting.query.filter_by(key="theme_mode").first():
         db.session.add(Setting(key="theme_mode", value="light"))
     db.session.commit()
-
-

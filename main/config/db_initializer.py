@@ -1,13 +1,13 @@
+import logging
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from .config_loader import load_env_config  # ✅ استيراد نسبي
-import logging
+from .config_loader import load_env_config
 
-# ✅ إعداد نظام تسجيل الرسائل
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-# ✅ تحميل الإعدادات من ملف .env
+# Load configuration from the .env file
 config = load_env_config()
 DB_NAME = config["DB_NAME"]
 DB_USER = config["DB_USER"]
@@ -16,7 +16,16 @@ DB_HOST = config["DB_HOST"]
 DB_PORT = config.get("DB_PORT", 5432)
 
 def ensure_database_exists():
-    logger.info(f"🧪 Connecting to admin DB 'postgres' to check/create '{DB_NAME}'...")
+    """
+    Ensures that the specified database exists in the PostgreSQL server.
+
+    Connects to the default 'postgres' administrative database, checks if the
+    target database exists, and creates it if it does not.
+
+    Logs the outcome of the check or creation process. In case of an error,
+    logs the exception details.
+    """
+    logger.info(f"Connecting to admin DB 'postgres' to check/create '{DB_NAME}'...")
 
     try:
         with psycopg2.connect(
@@ -33,10 +42,10 @@ def ensure_database_exists():
 
                 if not exists:
                     cur.execute(f"CREATE DATABASE {DB_NAME};")
-                    logger.info(f"✅ Database '{DB_NAME}' created successfully.")
+                    logger.info(f"Database '{DB_NAME}' created successfully.")
                 else:
-                    logger.info(f"✅ Database '{DB_NAME}' already exists.")
+                    logger.info(f"Database '{DB_NAME}' already exists.")
 
     except Exception as e:
-        logger.error("❌ Failed to verify or create the database:")
+        logger.error("Failed to verify or create the database:")
         logger.exception(e)

@@ -1,6 +1,7 @@
 from ..extensions import db
 from sqlalchemy.dialects.postgresql import JSON
 
+
 class Section(db.Model):
     """
     Core section table.
@@ -50,7 +51,7 @@ class ResumeParagraph(db.Model):
 
     fields = db.relationship(
         "ResumeField",
-        back_populates="paragraph",  # ✅ العلاقة الثنائية الصريحة
+        back_populates="paragraph",  # Explicit bidirectional relationship
         cascade="all, delete-orphan",
         lazy=True
     )
@@ -65,7 +66,7 @@ class ResumeField(db.Model):
     key = db.Column(db.String(50), nullable=False)
     value = db.Column(db.Text, nullable=True)
 
-    # ✅ دعم الترجمة المتعددة
+    # Support for multilingual translation
     value_translations = db.Column(JSON, nullable=True)
 
     field_type = db.Column("type", db.String(50), nullable=False, default='text')
@@ -74,7 +75,7 @@ class ResumeField(db.Model):
 
     paragraph = db.relationship(
         "ResumeParagraph",
-        back_populates="fields"  # ✅ العلاقة الثنائية الصريحة
+        back_populates="fields"  # Explicit bidirectional relationship
     )
 
 

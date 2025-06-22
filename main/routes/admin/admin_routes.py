@@ -6,6 +6,7 @@ import json
 
 from . import admin_bp
 
+
 @admin_bp.route("/sections", methods=["GET", "POST"])
 def manage_sections():
     """
@@ -25,6 +26,7 @@ def manage_sections():
     sections = Section.query.all()
     return render_template("admin/sections.html.j2", sections=sections)
 
+
 @admin_bp.route("/settings", methods=["GET", "POST"])
 def manage_settings():
     """
@@ -38,7 +40,7 @@ def manage_settings():
 
     if request.method == "POST":
         try:
-            # ✅ section_title_css
+            # Section title CSS settings
             font_size = request.form.get("section_title_css_font_size")
             color = request.form.get("section_title_css_color")
             weight = request.form.get("section_title_css_weight")
@@ -53,7 +55,7 @@ def manage_settings():
             if setting:
                 setting.value = json.dumps(css_json)
 
-            # ✅ paragraph_css
+            # Paragraph CSS settings
             p_font_size = request.form.get("paragraph_css_font_size")
             p_color = request.form.get("paragraph_css_color")
             if not p_font_size or not p_color:
@@ -66,21 +68,20 @@ def manage_settings():
             if p_setting:
                 p_setting.value = json.dumps(paragraph_css_json)
 
-            # ✅ body_font
+            # Body font setting
             body_font = request.form.get("body_font")
             b_setting = Setting.query.filter_by(key="body_font").first()
             if b_setting:
                 b_setting.value = body_font
 
-            # ✅ فقط الحقول التي يجب فحصها كـ JSON
+            # Keys that should be validated as JSON
             json_keys = ["section_title_css", "paragraph_css"]
 
-            # ✅ الحقول التي لا يجب تعديلها مباشرة
+            # Keys to skip in the general update loop
             skip_keys = [
                 "section_title_css_font_size", "section_title_css_color", "section_title_css_weight",
                 "paragraph_css_font_size", "paragraph_css_color",
-                "body_font",
-                "dark_mode_enabled"
+                "body_font", "dark_mode_enabled"
             ]
 
             for key, value in request.form.items():
@@ -95,7 +96,7 @@ def manage_settings():
                             raise ValueError(f"Invalid JSON value for setting: {key}")
                     s.value = value
 
-            # ✅ الوضع الليلي (اختياري قديم)
+            # Optional legacy dark mode setting
             dark_value = request.form.get("dark_mode_enabled", "false")
             dark_setting = Setting.query.filter_by(key="dark_mode_enabled").first()
             if dark_setting:
@@ -111,7 +112,7 @@ def manage_settings():
         except Exception as e:
             error = f"Error in JSON format: {str(e)}"
 
-    # ✅ إعدادات العرض
+    # Default display settings
     section_title_css_data = {
         "font-size": "20px",
         "color": "#000000",
@@ -150,16 +151,3 @@ def manage_settings():
             paragraph_css_data=paragraph_css_data,
             body_font_value=body_font_value
         )
-
-
-# @admin_bp.route("/builder")
-# def resume_builder():
-#     """
-#     Display the resume builder interface.
-
-#     Returns:
-#         Response: Rendered builder template.
-#     """
-#     sections = ResumeSection.query.order_by(ResumeSection.order).all()
-#     return render_template("admin/resume_builder.html.j2", sections=sections)
-

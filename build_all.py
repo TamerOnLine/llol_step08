@@ -62,60 +62,52 @@ def write_to_docs(content: str, output_path=OUTPUT_PATH):
     with open(output_path, "w", encoding="utf-8") as file:
         file.write(content)
 
-import subprocess
-import sys
-
 def run_script(description: str, command: list) -> bool:
     """
-    Execute a shell command with logging (for CLI).
+    Execute a shell command with logging.
 
     Args:
         description (str): Description of the command being run.
-        command (list): Command to execute as list of strings.
+        command (list): Command to execute.
 
     Returns:
-        bool: True if command executed successfully, False otherwise.
+        bool: True if the command was successful, False otherwise.
     """
-    print(f"\n🔧 {description}...\n")
+    print(f"\n[INFO] {description}...\n")
     try:
         subprocess.run(command, check=True)
-        print(f"✅ Success: {description} completed.\n")
+        print(f"[SUCCESS] {description} completed.\n")
         return True
     except subprocess.CalledProcessError as error:
-        print(f"❌ Error during {description}: {error}\n")
+        print(f"[ERROR] Failed during {description}: {error}\n")
         return False
 
-    
 def check_virtual_environment():
+    """
+    Ensure the script is run inside a virtual environment.
+    """
     if sys.prefix == sys.base_prefix:
         import platform
-        if platform.system() == "Windows":
-            activate_cmd = ".\\venv\\Scripts\\Activate"
-        else:
-            activate_cmd = "source venv/bin/activate"
+        activate_cmd = ".\\venv\\Scripts\\Activate" if platform.system() == "Windows" else "source venv/bin/activate"
 
-        print("❌ You are not inside a virtual environment (venv).")
-        print(f"👉 Please activate it first using:\n   {activate_cmd}\n")
+        print("[ERROR] Not inside a virtual environment (venv).")
+        print(f"[ACTION] Please activate it using:\n  {activate_cmd}\n")
         sys.exit(1)
-
 
 def main():
     """
     Main function to process README and build documentation.
     """
-    check_virtual_environment()  # ← تحقق من تفعيل venv أولًا
+    check_virtual_environment()
 
-    print("Starting full build process...\n")
+    print("Starting documentation build process...\n")
 
-    # Step 0: Setup folder structure
     run_script("Setting up documentation structure", [sys.executable, "setup_docs_structure.py"])
 
-    # Step 1: Prepare documentation files
-    if not run_script("Executing prepare_docs.py", [sys.executable, "prepare_docs.py"]):
+    if not run_script("Preparing documentation", [sys.executable, "prepare_docs.py"]):
         return
 
-    # Step 2: Build site using MkDocs
-    if not run_script("Running mkdocs build", ["mkdocs", "build"]):
+    if not run_script("Building site using MkDocs", ["mkdocs", "build"]):
         return
 
     print("\nAll steps completed successfully.")
