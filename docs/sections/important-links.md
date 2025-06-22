@@ -59,14 +59,30 @@ This project relies on the following tools, libraries, and developer resources:
 
 ## 💻 Developer Tools
 
-- 🐍 **Python (required)**  
+- 🐍 **Python** (required)  
   [Download Python](https://www.python.org/downloads/)
 
-- 🧑‍💻 **Visual Studio Code (recommended editor)**  
+- 👩‍💻 **Visual Studio Code** (recommended editor)  
   [Download VS Code](https://code.visualstudio.com/)
 
-Recommended VS Code extensions:
+- 🐘 **PostgreSQL** (required for database)  
+  [Download PostgreSQL](https://www.postgresql.org/download/)
+
+- 🧠 **pgAdmin** (optional GUI for PostgreSQL)  
+  [Download pgAdmin](https://www.pgadmin.org/download/)
+
+- 🧰 **PostgreSQL Management Tools (custom project)**  
+  [postgres_study_project – GitHub](https://github.com/TamerOnLine/postgres_study_project)
+
+---
+
+### 🔌 Recommended VS Code extensions
+
 - Python (by Microsoft)  
 - Pylance  
 - Markdown All in One  
-- MkDocs Material Snippets (optional)
+- MkDocs Material Snippets *(optional)*
+
+📅 *2025-06-22*
+
+---
