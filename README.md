@@ -16,7 +16,8 @@
 
 [![Last Commit](https://img.shields.io/github/last-commit/TamerOnLine/llol_step08)](https://github.com/TamerOnLine/llol_step08)
 
-[![Coverage](https://codecov.io/gh/TamerOnLine/llol_step08/branch/main/graph/badge.svg)](https://codecov.io/gh/TamerOnLine/llol_step08/branch/main)
+[![Coverage](https://codecov.io/gh/TamerOnLine/llol_step08/branch/main/graph/badge.svg)](https://codecov.io/gh/TamerOnLine/llol_step08)
+
 
 ## 🚀 Release
 [![Release](https://img.shields.io/github/v/release/TamerOnLine/llol_step08?include_prereleases)](https://github.com/TamerOnLine/llol_step08/releases)

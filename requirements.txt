@@ -10,5 +10,9 @@ polib
 # step 14 - llol_step06:
 python-dotenv
 psycopg2-binary
+# step 14 - llol_step08:
+pytest
+pytest-cov
+codecov
 
 
