@@ -41,7 +41,7 @@ Follow these steps to clone the repository and set up your development environme
 git clone https://github.com/TamerOnLine/llol_step08.git  # Clone the project repository from GitHub
 cd llol_step08                                            # Navigate into the project directory
 python -m venv venv                                       # Create a virtual environment named 'venv'
-.\venv\Scripts\Activate                                # Activate the virtual environment (Windows CMD)
+.\venv\Scripts\Activate                                  # Activate the virtual environment (Windows CMD)
 python -m pip install --upgrade pip                       # Upgrade pip to the latest version
 pip install -r requirements.txt                           # Install all required dependencies
 ```
