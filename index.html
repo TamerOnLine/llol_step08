@@ -478,14 +478,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-the-flask-app" class="md-nav__link">
+  <a href="#database-setup-env-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Running the Flask App
+      🛠️ Database Setup &amp; .env Configuration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🚀 Running the Flask App">
+    <nav class="md-nav" aria-label="🛠️ Database Setup &amp; .env Configuration">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-the-env-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 1: Create the .env file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-the-postgresql-database-if-not-already-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 2: Create the PostgreSQL database (if not already created)
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#demo_2" class="md-nav__link">
@@ -510,15 +528,6 @@
   <a href="#project-structure" class="md-nav__link">
     <span class="md-ellipsis">
       📂 Project Structure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧪 Running Tests
     </span>
   </a>
   
@@ -893,14 +902,51 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tr>
 </tbody>
 </table>
-<h3 id="running-the-flask-app">🚀 Running the Flask App<a class="headerlink" href="#running-the-flask-app" title="Permanent link">&para;</a></h3>
-<p>To start the development server, run the following command:</p>
+<hr />
+<h3 id="database-setup-env-configuration">🛠️ Database Setup &amp; <code>.env</code> Configuration<a class="headerlink" href="#database-setup-env-configuration" title="Permanent link">&para;</a></h3>
+<p>Before running the app, you must create the target PostgreSQL database manually and configure environment variables for the connection.</p>
+<h4 id="step-1-create-the-env-file">✅ Step 1: Create the <code>.env</code> file<a class="headerlink" href="#step-1-create-the-env-file" title="Permanent link">&para;</a></h4>
+<p>In the root directory of the project, create a file named <code>.env</code> and add the following lines:</p>
+<div class="highlight"><pre><span></span><code>DB_NAME=postgreslebenslauf
+DB_USER=postgres
+DB_PASSWORD=12345
+DB_HOST=localhost
+DB_PORT=5432
+FLASK_DEBUG=True
+</code></pre></div>
+<p>Replace the values with your actual PostgreSQL credentials.</p>
+<blockquote>
+<p>💡 <strong>Note:</strong> The database <code>postgreslebenslauf</code> must already exist on your PostgreSQL server. This project does <strong>not</strong> create the database itself — it only creates tables inside it.</p>
+</blockquote>
+<hr />
+<h4 id="step-2-create-the-postgresql-database-if-not-already-created">✅ Step 2: Create the PostgreSQL database (if not already created)<a class="headerlink" href="#step-2-create-the-postgresql-database-if-not-already-created" title="Permanent link">&para;</a></h4>
+<p>You can create the database using any method you prefer:</p>
+<ul>
+<li>
+<p><strong>Using <code>psql</code> CLI</strong>:
+  <div class="highlight"><pre><span></span><code>createdb<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>postgreslebenslauf
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Inside <code>psql</code> shell</strong>:
+  <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">postgreslebenslauf</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Using pgAdmin GUI</strong>:</p>
+</li>
+<li>Open pgAdmin</li>
+<li>Right-click on <strong>Databases</strong> → <strong>Create</strong> → <strong>Database</strong></li>
+<li>Set the name to <code>postgreslebenslauf</code> and save</li>
+</ul>
+<hr />
+<p>After completing these steps, you can start the app with:</p>
 <div class="highlight"><pre><span></span><code>py<span class="w"> </span>-m<span class="w"> </span>run
 </code></pre></div>
 <p>This will:
-- Connect to the PostgreSQL admin database.
-- Create the working database <code>postgreslebenslauf</code> (if not already existing).
-- Create required tables.
+- Connect to the PostgreSQL server using the credentials in <code>.env</code>.
+- Expect the database <code>postgreslebenslauf</code> to already exist.
+- Create required tables automatically if missing.
 - Launch the Flask app in development mode with debugging enabled.</p>
 <h4 id="demo_2">🎬 Demo<a class="headerlink" href="#demo_2" title="Permanent link">&para;</a></h4>
 <p align="center">
@@ -925,19 +971,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 └──<span class="w"> </span>...
 </code></pre></div>
 <hr />
-<h2 id="running-tests">🧪 Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>pytest
-</code></pre></div>
-<blockquote>
-<p>Coming soon: Unit tests for translation, section logic, and UI views.</p>
-</blockquote>
-<hr />
 <h2 id="roadmap">🗺️ Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
 <ul>
 <li>✅ Step 07: Translation engine + dynamic sections</li>
-<li>⏭️ Step 08: Admin interface for language settings</li>
-<li>🔒 Step 09: Add authentication for admin users</li>
+<li>🚧 Step 08: Admin interface for language settings (in progress)</li>
+<li>⏭️ Step 09: Display resume content using a ready-made template</li>
 <li>📄 Step 10: Export resume to PDF</li>
+<li>🎨 Step 11: Fine-tune paragraph formatting</li>
+<li>🔜 Step 12: To be determined</li>
 </ul>
 <hr />
 <h2 id="built-with">🧰 Built With<a class="headerlink" href="#built-with" title="Permanent link">&para;</a></h2>
