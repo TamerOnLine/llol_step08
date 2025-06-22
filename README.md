@@ -12,16 +12,13 @@
 [![Build](https://github.com/TamerOnLine/llol_step08/actions/workflows/main.yml/badge.svg)](https://github.com/TamerOnLine/llol_step08/actions/workflows/main.yml)
 [![PostgreSQL Status](https://github.com/TamerOnLine/llol_step08/actions/workflows/postgres-check.yml/badge.svg)](https://github.com/TamerOnLine/llol_step08/actions/workflows/postgres-check.yml)
 [![Tests](https://github.com/TamerOnLine/llol_step08/actions/workflows/test.yml/badge.svg)](https://github.com/TamerOnLine/llol_step08/actions/workflows/test.yml)
-
-
 [![Last Commit](https://img.shields.io/github/last-commit/TamerOnLine/llol_step08)](https://github.com/TamerOnLine/llol_step08)
-
 [![Coverage](https://codecov.io/gh/TamerOnLine/llol_step08/branch/main/graph/badge.svg)](https://codecov.io/gh/TamerOnLine/llol_step08)
 
 
 ## 🚀 Release
 [![Release](https://img.shields.io/github/v/release/TamerOnLine/llol_step08?include_prereleases)](https://github.com/TamerOnLine/llol_step08/releases)
-[![Downloads](https://img.shields.io/pypi/dm/PACKAGE)](https://pypi.org/project/PACKAGE)
+
 
 ## 📄 License
 [![License](https://img.shields.io/github/license/TamerOnLine/llol_step08)](https://github.com/TamerOnLine/llol_step08)
