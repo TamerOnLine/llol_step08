@@ -226,9 +226,7 @@ Feel free to explore and build upon it.
 
 ---
 
-## 👨‍💻 Developer
-
-## Connect With Me
+## 👨‍💻 Developer - Connect With Me
 
 [![GitHub](https://img.shields.io/badge/GitHub-TamerOnLine-181717?style=flat&logo=github)](https://github.com/TamerOnLine)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/tameronline/)
