@@ -1,0 +1,17 @@
+name: PostgreSQL Status
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */12 * * *'  # كل 12 ساعات
+
+jobs:
+  check-db:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🧰 Install PostgreSQL client
+      run: sudo apt-get install -y postgresql-client
+
+    - name: 🔗 Simulate DB check (placeholder)
+      run: echo "Connection to PostgreSQL simulated ✅"
