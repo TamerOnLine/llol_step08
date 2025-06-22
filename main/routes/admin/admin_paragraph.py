@@ -6,7 +6,7 @@ from flask_babel import force_locale, gettext as _
 from . import admin_bp
 
 
-# View all paragraphs within a section
+# View all paragraphs within a specific section
 @admin_bp.route('/section/<int:section_id>/view')
 def single_section_view(section_id):
     section = ResumeSection.query.get_or_404(section_id)
@@ -84,7 +84,6 @@ def move_paragraph_up(paragraph_id):
         ResumeParagraph.resume_section_id == section.id,
         ResumeParagraph.order < paragraph.order
     ).order_by(ResumeParagraph.order.desc()).first()
-
     if previous:
         paragraph.order, previous.order = previous.order, paragraph.order
         db.session.commit()
@@ -105,7 +104,6 @@ def move_paragraph_down(paragraph_id):
         ResumeParagraph.resume_section_id == section.id,
         ResumeParagraph.order > paragraph.order
     ).order_by(ResumeParagraph.order.asc()).first()
-
     if next_item:
         paragraph.order, next_item.order = next_item.order, paragraph.order
         db.session.commit()

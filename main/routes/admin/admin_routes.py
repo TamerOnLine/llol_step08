@@ -40,7 +40,6 @@ def manage_settings():
 
     if request.method == "POST":
         try:
-            # Section title CSS settings
             font_size = request.form.get("section_title_css_font_size")
             color = request.form.get("section_title_css_color")
             weight = request.form.get("section_title_css_weight")
@@ -55,7 +54,6 @@ def manage_settings():
             if setting:
                 setting.value = json.dumps(css_json)
 
-            # Paragraph CSS settings
             p_font_size = request.form.get("paragraph_css_font_size")
             p_color = request.form.get("paragraph_css_color")
             if not p_font_size or not p_color:
@@ -68,16 +66,12 @@ def manage_settings():
             if p_setting:
                 p_setting.value = json.dumps(paragraph_css_json)
 
-            # Body font setting
             body_font = request.form.get("body_font")
             b_setting = Setting.query.filter_by(key="body_font").first()
             if b_setting:
                 b_setting.value = body_font
 
-            # Keys that should be validated as JSON
             json_keys = ["section_title_css", "paragraph_css"]
-
-            # Keys to skip in the general update loop
             skip_keys = [
                 "section_title_css_font_size", "section_title_css_color", "section_title_css_weight",
                 "paragraph_css_font_size", "paragraph_css_color",
@@ -96,7 +90,6 @@ def manage_settings():
                             raise ValueError(f"Invalid JSON value for setting: {key}")
                     s.value = value
 
-            # Optional legacy dark mode setting
             dark_value = request.form.get("dark_mode_enabled", "false")
             dark_setting = Setting.query.filter_by(key="dark_mode_enabled").first()
             if dark_setting:
@@ -112,7 +105,6 @@ def manage_settings():
         except Exception as e:
             error = f"Error in JSON format: {str(e)}"
 
-    # Default display settings
     section_title_css_data = {
         "font-size": "20px",
         "color": "#000000",

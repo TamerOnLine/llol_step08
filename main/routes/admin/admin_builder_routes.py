@@ -7,7 +7,7 @@ from flask_babel import force_locale, gettext as _
 from . import admin_bp
 
 
-# Render resume builder interface
+# Render the resume builder interface
 @admin_bp.route("/admin/resume_builder")
 def resume_builder():
     sections = ResumeSection.query.order_by(ResumeSection.order).all()
@@ -15,7 +15,7 @@ def resume_builder():
         return render_template("admin/resume_builder.html.j2", sections=sections)
 
 
-# Add a new section
+# Add a new resume section
 @admin_bp.route("/admin/resume_section/add", methods=["POST"])
 def add_resume_section():
     title = request.form.get("title")
@@ -29,7 +29,7 @@ def add_resume_section():
     return redirect(url_for("admin.resume_builder"))
 
 
-# Edit a section
+# Edit a resume section
 @admin_bp.route("/admin/resume_section/edit/<int:section_id>", methods=["POST"])
 def edit_resume_section(section_id):
     section = ResumeSection.query.get_or_404(section_id)
@@ -50,7 +50,7 @@ def edit_resume_section(section_id):
     return redirect(url_for("admin.resume_builder"))
 
 
-# Delete a section
+# Delete a resume section
 @admin_bp.route("/admin/resume_section/delete/<int:section_id>", methods=["POST"])
 def delete_resume_section(section_id):
     section = ResumeSection.query.get_or_404(section_id)

@@ -1,3 +1,7 @@
+"""
+Initialize the admin Blueprint and register admin route modules.
+"""
+
 from flask import Blueprint
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
