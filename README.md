@@ -133,20 +133,62 @@ These are stored as JSON in the `Setting` table and dynamically applied to your 
 | `i18n_translate.py` | Auto translation and `.po` file generation |
 | `run.py` | App bootstrap with DB creation |
 
+---
 
+### 🛠️ Database Setup & `.env` Configuration
 
-### 🚀 Running the Flask App
+Before running the app, you must create the target PostgreSQL database manually and configure environment variables for the connection.
 
-To start the development server, run the following command:
+#### ✅ Step 1: Create the `.env` file
+
+In the root directory of the project, create a file named `.env` and add the following lines:
+
+```env
+DB_NAME=postgreslebenslauf
+DB_USER=postgres
+DB_PASSWORD=12345
+DB_HOST=localhost
+DB_PORT=5432
+FLASK_DEBUG=True
+```
+
+Replace the values with your actual PostgreSQL credentials.
+
+> 💡 **Note:** The database `postgreslebenslauf` must already exist on your PostgreSQL server. This project does **not** create the database itself — it only creates tables inside it.
+
+---
+
+#### ✅ Step 2: Create the PostgreSQL database (if not already created)
+
+You can create the database using any method you prefer:
+
+- **Using `psql` CLI**:
+  ```bash
+  createdb -U postgres postgreslebenslauf
+  ```
+
+- **Inside `psql` shell**:
+  ```sql
+  CREATE DATABASE postgreslebenslauf;
+  ```
+
+- **Using pgAdmin GUI**:
+  - Open pgAdmin
+  - Right-click on **Databases** → **Create** → **Database**
+  - Set the name to `postgreslebenslauf` and save
+
+---
+
+After completing these steps, you can start the app with:
 
 ```bash
 py -m run
 ```
 
 This will:
-- Connect to the PostgreSQL admin database.
-- Create the working database `postgreslebenslauf` (if not already existing).
-- Create required tables.
+- Connect to the PostgreSQL server using the credentials in `.env`.
+- Expect the database `postgreslebenslauf` to already exist.
+- Create required tables automatically if missing.
 - Launch the Flask app in development mode with debugging enabled.
 
 #### 🎬 Demo
@@ -177,22 +219,15 @@ main/
 
 ---
 
-## 🧪 Running Tests
-
-```bash
-pytest
-```
-
-> Coming soon: Unit tests for translation, section logic, and UI views.
-
----
-
 ## 🗺️ Roadmap
 
 - ✅ Step 07: Translation engine + dynamic sections
-- ⏭️ Step 08: Admin interface for language settings
-- 🔒 Step 09: Add authentication for admin users
+- 🚧 Step 08: Admin interface for language settings (in progress)
+- ⏭️ Step 09: Display resume content using a ready-made template
 - 📄 Step 10: Export resume to PDF
+- 🎨 Step 11: Fine-tune paragraph formatting
+- 🔜 Step 12: To be determined
+
 
 ---
 
